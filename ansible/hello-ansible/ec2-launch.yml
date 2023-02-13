@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: start an instance with a public IP address
+      amazon.aws.ec2_instance:
+        name: "public-compute-instance"
+        key_name: "key-amazon"
+        vpc_subnet_id: subnet-0a777c7272fde2cf6
+        instance_type: t2.micro
+        security_group: default
+        network:
+           assign_public_ip: true
+        image_id: ami-0b752bf1df193a6c4
